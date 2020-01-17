@@ -6,7 +6,7 @@
  * Time: 11:22
  */
 
-class System20 extends \SandraCore\System {
+class Sandra7Bridge extends \SandraCore\System {
 
 
     public function __construct($env = '', $install = false, $dbHost = '127.0.0.1', $db = 'sandra', $dbUsername = 'root', $dbpassword = '')
