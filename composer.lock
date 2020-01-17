@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f894b3ecf3f2280cc436ad5682a92a85",
+    "content-hash": "a01c622b31fd5303a1fa9332625cc4e0",
     "packages": [
         {
             "name": "everdreamsoft/crystal-spark-cannon",
