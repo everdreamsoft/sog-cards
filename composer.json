@@ -1,0 +1,38 @@
+{
+  "name": "everdreamsoft/sog-cards",
+  "description": "A library to manage SOG cards",
+  "require": {
+    "php": ">=7.1",
+    "ext-json": "*",
+
+    "everdreamsoft/crystal-spark-cannon": "dev-baster"
+  },
+
+  "require-dev": {
+    "phpunit/phpunit": "^4.0 || ^5.0",
+    "gossi/php-code-generator": "^0.5.0",
+
+    "everdreamsoft/sandra": "dev-master"
+  },
+
+
+  "autoload": {
+    "psr-4": {
+      "Ethereum\\": "src/"
+    }
+  },
+
+
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+
+
+  "license": "MIT",
+  "authors": [
+
+    {
+      "name": "Shaban Shaame",
+      "email": "shaban@everdreamsoft.com"
+    }
+  ]
+}
