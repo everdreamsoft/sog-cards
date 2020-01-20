@@ -6,6 +6,8 @@
  * Time: 11:22
  */
 
+namespace CsSog;
+
 class Sandra7Bridge extends \SandraCore\System {
 
 
