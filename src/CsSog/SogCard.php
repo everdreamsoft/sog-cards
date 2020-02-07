@@ -16,7 +16,7 @@ use SandraCore\Entity;
 use SandraCore\EntityFactory;
 use SandraCore\System;
 
-class SogCard extends Entity
+class SogCard extends Asset
 {
 
     public $dictionary=array(
@@ -200,6 +200,8 @@ class SogCardLevel extends Entity
 
         }
 
+
+
         //this seems to be fixed
         $data['upgradeCost'] = -1;
         $data['crystallizeValue'] = -1;
@@ -233,7 +235,12 @@ class SogCardLevel extends Entity
 
          $spell = end($spellsArray);
 
-         /** @var SogSpell $spell */
+        if (!($spell instanceof SogSpell)) {
+            return "none";
+        }
+
+
+            /** @var SogSpell $spell */
 
          return $spell->getName();
 

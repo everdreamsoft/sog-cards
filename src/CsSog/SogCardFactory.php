@@ -24,11 +24,12 @@ class SogCardFactory extends \SandraCore\EntityFactory
     protected  $collectionEntity = null ;
     protected  $collectionFactory = null ;
     protected  $contractFactory = null ; // to load all counterparty contracts to be able to bind them to cards
+    protected  $bundle = null ; // to load all counterparty contracts to be able to bind them to cards
 
 
     public function __construct($bundle, System $system)
     {
-
+        $this->bundle = $bundle ;
 
        // $bundle = 'sogDevFile';
         parent::__construct(self::ISA, $bundle, $system);
@@ -56,6 +57,27 @@ class SogCardFactory extends \SandraCore\EntityFactory
 
 
 }
+
+    public  function getPopulatedCardFromId($cardId){
+
+        $factory = new SogCardFactory($this->bundle,$this->system);
+        $card = $this->last(SogCard::MOONGA_ID,$cardId);
+
+        $factory->populateLocal();
+        $factory->populateBrotherEntities($factory->entityReferenceContainer,AssetFactory::$file);
+
+        SogCardFamilyFactory::getLoadedFamilyBundle($bundle,$system,$factory);
+
+
+        $levelsFactory = SogCardLevelFactory::getLoadedCardLevelBundle($bundle,$system,$factory);
+        //$factory->joinFactory(self::HAS_LEVEL,$family);
+        $factory->joinPopulate();
+
+        return $factory ;
+
+
+
+    }
 
     public  function getSogCollectionEntity(){
 
