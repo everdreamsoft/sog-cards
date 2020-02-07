@@ -160,6 +160,7 @@ class SogCardFamilyFactory extends \SandraCore\EntityFactory
    protected const S10_XCP_FILE = 'CsSog\SogCardFamily' ;
     public const S10_BIND_CP = 'cp_asset' ;
     public const S10_CONTRACT_ID = 'cp_asset_name' ;
+    public const HAS_RARITY = 'hasRarity' ;
 
 
     public function __construct($bundle, System $system)
@@ -184,6 +185,9 @@ class SogCardFamilyFactory extends \SandraCore\EntityFactory
 
         $cardFactory->joinFactory(SogCardFactory::BELONG_TO_FAMILY,$factory);
         $cardFactory->joinPopulate();
+
+        $factory->joinFactory(self::HAS_RARITY,$factory);
+        $factory->joinPopulate();
 
         $factory->joinFactory(self::S10_BIND_CP,$sandra10XcpContractFactory);
         $factory->joinPopulate();

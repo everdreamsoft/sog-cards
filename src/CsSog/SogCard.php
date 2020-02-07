@@ -29,6 +29,7 @@ class SogCard extends Asset
     public const MOONGA_ID = 'moongaCardId' ;
     public const SOG_CODE = 'sogCardIndex' ; //the new moongaId
     public const EVOLUTION_RANK = 'evolutionRank' ; //the new moongaId
+    public const NAME = 'title' ; //the new moongaId
 
     public function getDisplay($dictionary = null){
 
@@ -102,7 +103,7 @@ class SogCard extends Asset
         }
 
         //do we have a level 3 card ?
-       // if ($this->getEvolutionRank() != 3) return ;
+        // if ($this->getEvolutionRank() != 3) return ;
 
         $collectionEntity = $this->getFactory()->getSogCollectionEntity();
 
@@ -155,11 +156,21 @@ class SogCard extends Asset
         $output = null ;
         if ($s10XcpContractEntity){
             /** @var Entity $s10XcpContractEntity */
-           $output = $s10XcpContractEntity->get(SogCardFamilyFactory::S10_CONTRACT_ID);
+            $output = $s10XcpContractEntity->get(SogCardFamilyFactory::S10_CONTRACT_ID);
 
         }
 
         return $output ;
+
+
+    }
+
+    public  function getName()
+    {
+
+
+
+        return $this->get(self::NAME);
 
 
     }
@@ -196,11 +207,9 @@ class SogCardLevel extends Entity
         $spells =$this->getSpells();
 
         foreach ($spells ? $spells : array() as $spells){
-          //  $data['spellArray'][] = $spells->getDisplay();
+            //  $data['spellArray'][] = $spells->getDisplay();
 
         }
-
-
 
         //this seems to be fixed
         $data['upgradeCost'] = -1;
@@ -230,19 +239,20 @@ class SogCardLevel extends Entity
     public function getSpellName()
     {
 
-         $spellsArray =$this->getJoinedEntities(SogCardLevelFactory::HAS_SPELL);
-         if (!is_array($spellsArray)) return 'null';
+        $spellsArray =$this->getJoinedEntities(SogCardLevelFactory::HAS_SPELL);
+        if (!is_array($spellsArray)) return 'null';
 
-         $spell = end($spellsArray);
+        $spell = end($spellsArray);
 
         if (!($spell instanceof SogSpell)) {
             return "none";
+
         }
 
 
-            /** @var SogSpell $spell */
+        /** @var SogSpell $spell */
 
-         return $spell->getName();
+        return $spell->getName();
 
 
     }
