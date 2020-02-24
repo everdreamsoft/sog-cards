@@ -179,7 +179,7 @@ class SogCard extends Asset
     public  function setMaxSupply(int $supply)
     {
 
-        return $this->set(self::MAX_SUPPLY,$supply);
+        return $this->createOrUpdateRef(self::MAX_SUPPLY,$supply);
 
 
     }
@@ -195,7 +195,7 @@ class SogCard extends Asset
     public  function setEthereumSupply(int $supply)
     {
 
-        return $this->set(self::ETHEREUM_SUPPLY,$supply);
+        return $this->createOrUpdateRef(self::ETHEREUM_SUPPLY,$supply);
 
 
     }
@@ -211,7 +211,7 @@ class SogCard extends Asset
     public  function setCounterpartySupply(int $supply)
     {
 
-        return $this->set(self::COUNTERPARTY_SUPPLY,$supply);
+        return $this->createOrUpdateRef(self::COUNTERPARTY_SUPPLY,$supply);
 
 
     }
