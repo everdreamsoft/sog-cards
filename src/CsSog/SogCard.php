@@ -30,6 +30,9 @@ class SogCard extends Asset
     public const SOG_CODE = 'sogCardIndex' ; //the new moongaId
     public const EVOLUTION_RANK = 'evolutionRank' ; //the new moongaId
     public const NAME = 'title' ; //the new moongaId
+    public const MAX_SUPPLY = 'maxSupply' ; //the new moongaId
+    public const ETHEREUM_SUPPLY = 'ethSupply' ; //the new moongaId
+    public const COUNTERPARTY_SUPPLY = 'xcpSupply' ; //the new moongaId
 
     public function getDisplay($dictionary = null){
 
@@ -168,12 +171,60 @@ class SogCard extends Asset
     public  function getName()
     {
 
-
-
         return $this->get(self::NAME);
 
 
     }
+
+    public  function setMaxSupply(int $supply)
+    {
+
+        return $this->set(self::MAX_SUPPLY,$supply);
+
+
+    }
+
+    public  function getMaxSupply()
+    {
+
+        return $this->get(self::MAX_SUPPLY);
+
+
+    }
+
+    public  function setEthereumSupply(int $supply)
+    {
+
+        return $this->set(self::ETHEREUM_SUPPLY,$supply);
+
+
+    }
+
+    public  function getEthereumSupply()
+    {
+
+        return $this->get(self::ETHEREUM_SUPPLY);
+
+
+    }
+
+    public  function setCounterpartySupply(int $supply)
+    {
+
+        return $this->set(self::COUNTERPARTY_SUPPLY,$supply);
+
+
+    }
+
+    public  function getCounterpartySupply()
+    {
+
+        return $this->get(self::COUNTERPARTY_SUPPLY);
+
+
+    }
+
+
 
 
 
