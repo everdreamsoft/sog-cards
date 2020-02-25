@@ -44,6 +44,7 @@ class SogCardFactory extends \SandraCore\EntityFactory
         $factory = new SogCardFactory($bundle,$system);
         $factory->populateLocal();
         $factory->populateBrotherEntities($factory->entityReferenceContainer,AssetFactory::$file);
+        $factory->populateBrotherEntities('has_storage');
 
         SogCardFamilyFactory::getLoadedFamilyBundle($bundle,$system,$factory);
 

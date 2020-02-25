@@ -33,6 +33,8 @@ class SogCard extends Asset
     public const MAX_SUPPLY = 'maxSupply' ; //the new moongaId
     public const ETHEREUM_SUPPLY = 'ethSupply' ; //the new moongaId
     public const COUNTERPARTY_SUPPLY = 'xcpSupply' ; //the new moongaId
+    public const STORY = 'story_' ; //lanuague
+    public const SUPPORTED_LANGUAGES = ['en'] ;
 
     public function getDisplay($dictionary = null){
 
@@ -220,6 +222,37 @@ class SogCard extends Asset
     {
 
         return $this->get(self::COUNTERPARTY_SUPPLY);
+
+
+    }
+
+    public  function setStory($languange,$story)
+    {
+
+        if (!in_array($languange,self::SUPPORTED_LANGUAGES)) return false ;
+
+        $storyStorage = $this->getBrotherEntity('has_storage',self::STORY.$languange);
+        if (!$storyStorage) $storyStorage = $this->setBrotherEntity('has_storage',self::STORY.$languange,null);
+
+
+
+        return $storyStorage->setStorage($story);
+
+
+    }
+
+    public  function getStory($languange)
+    {
+
+        if (!in_array($languange,self::SUPPORTED_LANGUAGES)) return null ;
+
+        $storyStorage = $this->getBrotherEntity('has_storage',self::STORY.$languange);
+
+        if (!$storyStorage) return null ;
+
+        /** @var Entity $storyStorage */
+
+        return $storyStorage->getStorage();
 
 
     }
