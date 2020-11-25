@@ -17,8 +17,8 @@
 
 
   "autoload": {
-    "psr-4": {
-      "CsSog\\": "src/"
+    "psr-0": {
+      "CsSog": "src/"
     }
   },
 
