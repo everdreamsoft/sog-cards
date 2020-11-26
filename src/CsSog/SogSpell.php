@@ -9,7 +9,7 @@
 namespace CsSog;
 
 
-class SogSpell extends sogCardAttributes
+class SogSpell extends SogCardAttributes
 {
 
     public const SPELL_NAME = 'title';
