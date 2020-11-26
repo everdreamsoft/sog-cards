@@ -67,10 +67,10 @@ class SogCardFactory extends \SandraCore\EntityFactory
         $factory->populateLocal();
         $factory->populateBrotherEntities($factory->entityReferenceContainer,AssetFactory::$file);
 
-        SogCardFamilyFactory::getLoadedFamilyBundle($bundle,$system,$factory);
+        SogCardFamilyFactory::getLoadedFamilyBundle($this->bundle,$this->system,$factory);
 
 
-        $levelsFactory = SogCardLevelFactory::getLoadedCardLevelBundle($bundle,$system,$factory);
+        $levelsFactory = SogCardLevelFactory::getLoadedCardLevelBundle($this->bundle,$this->system,$factory);
         //$factory->joinFactory(self::HAS_LEVEL,$family);
         $factory->joinPopulate();
 
@@ -154,104 +154,11 @@ class SogCardFactory extends \SandraCore\EntityFactory
 
 }
 
-class SogCardFamilyFactory extends \SandraCore\EntityFactory
-{
-    public const ISA = 'cardFamily';
-   protected  $generatedEntityClass = 'CsSog\SogCardFamily' ;
-   protected const S10_XCP_FILE = 'CsSog\SogCardFamily' ;
-    public const S10_BIND_CP = 'cp_asset' ;
-    public const S10_CONTRACT_ID = 'cp_asset_name' ;
-    public const HAS_RARITY = 'hasRarity' ;
-
-
-    public function __construct($bundle, System $system)
-    {
-
-
-
-        //$this->getTriplets();
-
-
-
-        parent::__construct(self::ISA, $bundle, $system);
-    }
-
-    public static function getLoadedFamilyBundle($bundle, System $system, SogCardFactory $cardFactory)
-    {
-
-        $sandra10XcpContractFactory = new EntityFactory('cp_asset','cp_asset',$system);
-        $sandra10XcpContractFactory->entityReferenceContainer = 'is_a';
-
-        $factory = new SogCardFamilyFactory($bundle,$system);
-
-        $cardFactory->joinFactory(SogCardFactory::BELONG_TO_FAMILY,$factory);
-        $cardFactory->joinPopulate();
-
-        $factory->joinFactory(self::HAS_RARITY,$factory);
-        $factory->joinPopulate();
-
-        $factory->joinFactory(self::S10_BIND_CP,$sandra10XcpContractFactory);
-        $factory->joinPopulate();
-        return $factory ;
-
-    }
 
 
 
 
 
-
-
-
-}
-
-
-
-class SogCardLevelFactory extends \SandraCore\EntityFactory
-{
-    public const ISA = 'sogCardLevel';
-    public const HAS_SPELL = 'hasSpells';
-    public const SPELL_STRENGTH = 'spellStrength';
-   // public const HAS_FAMILY = 'belongsToFamily';
-    protected  $generatedEntityClass = 'CsSog\SogCardLevel' ;
-
-
-
-    public function __construct($bundle, System $system)
-    {
-
-
-        parent::__construct(self::ISA, $bundle, $system);
-
-
-    }
-
-    public static function getLoadedCardLevelBundle($bundle, System $system, SogCardFactory $cardFactory){
-
-        $factory = new SogCardLevelFactory($bundle,$system);
-
-        $cardFactory->joinFactory(SogCardFactory::HAS_LEVEL,$factory);
-        $cardFactory->joinPopulate();
-
-        $factory->populateBrotherEntities(static::HAS_SPELL);
-
-        //get spell data
-
-
-        $spells = new SogSpellFactory($bundle,$system);
-        $factory->joinFactory(self::HAS_SPELL,$spells);
-        $factory->joinPopulate();
-
-
-
-
-        return $factory ;
-
-
-
-    }
-
-}
 
 function arrayRecursiveDiff($aArray1, $aArray2) {
     $aReturn = array();

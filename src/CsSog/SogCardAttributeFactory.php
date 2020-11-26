@@ -30,25 +30,7 @@ class SogCardAttributeFactory extends EntityFactory
 }
 
 
-class SogSpellFactory extends SogCardAttributeFactory
-{
-    const ISA = 'spellTemplate';
-    protected  $generatedEntityClass = 'CsSog\SogSpell' ;
 
 
 
-
-
-}
-
-class SogRarityFactory extends SogCardAttributeFactory
-{
-    const ISA = 'rarity';
-    protected  $generatedEntityClass = 'CsSog\SogRarity' ;
-
-
-
-
-
-}
 

@@ -2,8 +2,8 @@
 /**
  * Created by EverdreamSoft.
  * User: Shaban Shaame
- * Date: 20.11.19
- * Time: 12:48
+ * Date: 26.11.20
+ * Time: 17:27
  */
 
 namespace CsSog;
@@ -11,12 +11,11 @@ namespace CsSog;
 
 use SandraCore\Entity;
 
-class sogCardAttributes extends Entity
+class SogCardFamily extends Entity
 {
 
 
 
+
+
 }
-
-
-
