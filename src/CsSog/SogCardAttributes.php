@@ -11,7 +11,7 @@ namespace CsSog;
 
 use SandraCore\Entity;
 
-class sogCardAttributes extends Entity
+class SogCardAttributes extends Entity
 {
 
 
