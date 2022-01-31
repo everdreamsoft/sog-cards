@@ -66,6 +66,14 @@ class SogCard extends Asset
 
         }
 
+        try {
+            $family = $this->getFamily();
+            $response['rarity'] = $family->getRarity();
+
+        }catch (\Exception $exception){
+
+        }
+
         $response = $data ;
 
         return $response ;
