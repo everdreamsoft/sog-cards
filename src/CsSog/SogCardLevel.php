@@ -27,9 +27,8 @@ class SogCardLevel extends Entity
     public function populateWithEntities(System $sandra, string $bundle)
     {
         $this->factory->joinFactory(SogCardLevelFactory::HAS_SPELL, new SogSpellFactory($bundle, $sandra));
-        $this->factory->populateLocal();
         $this->factory->joinPopulate();
-        $this->factory->populateBrotherEntities();
+        $this->factory->populateBrotherEntities(SogCardLevelFactory::HAS_SPELL);
 
         return $this;
     }
