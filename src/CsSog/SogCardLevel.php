@@ -10,6 +10,7 @@ namespace CsSog;
 
 
 use SandraCore\Entity;
+use SandraCore\System;
 
 class SogCardLevel extends Entity
 {
@@ -23,6 +24,16 @@ class SogCardLevel extends Entity
 
     );
 
+    public function populateWithEntities(System $sandra, string $bundle)
+    {
+        $this->factory->joinFactory(SogCardLevelFactory::HAS_SPELL, new SogSpellFactory($bundle, $sandra));
+        $this->factory->populateLocal();
+        $this->factory->joinPopulate();
+        $this->factory->populateBrotherEntities();
+
+        return $this;
+    }
+
     public function getDisplay($dictionary = null){
 
         if(!$dictionary) $dictionary = $this->dictionary ;
@@ -33,14 +44,6 @@ class SogCardLevel extends Entity
         foreach ($this->dictionary ? $dictionary : array() as $key => $value){
 
             $data[$key] = $this->get($value);
-
-        }
-
-        $spells =$this->getSpells();
-
-        foreach ($spells ? $spells : array() as $spells){
-            //  $data['spellArray'][] = $spells->getDisplay();
-
         }
 
         //this seems to be fixed
@@ -50,13 +53,7 @@ class SogCardLevel extends Entity
         $data['spell'] = $this->getSpellName();
         $data['spellStrength'] = $this->getSpellStrength();
 
-
-
-        $response = $data ;
-
-
-
-        return $response ;
+        return $data;
 
     }
 
