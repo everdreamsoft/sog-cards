@@ -100,12 +100,12 @@ class SogCard extends Asset
         return $this->get(self::MOONGA_ID);
     }
 
-    public function getFamily():SogCardFamily
+    public function getFamily():?SogCardFamily
     {
 
         $singleFamily = $this->getJoinedEntities(SogCardFactory::BELONG_TO_FAMILY);
         //A card must have one and only one familly
-        return end($singleFamily);
+        return end($singleFamily) ?? null;
     }
 
     public function setCSCannonAsset(){

@@ -21,6 +21,11 @@ class SogCardFamilyFactory extends \SandraCore\EntityFactory
     public const S10_CONTRACT_ID = 'cp_asset_name' ;
     public const HAS_RARITY = 'hasRarity' ;
 
+    public const NAME = 'title';
+    public const HAS_ELEMENT = 'hasElement';
+    public const EXPANSION = 'belongsToExpansion';
+    public const CHILD_CARD = 'sogChildCardGenerated';
+
 
     public function __construct($bundle, System $system)
     {

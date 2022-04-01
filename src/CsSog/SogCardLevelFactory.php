@@ -19,7 +19,7 @@ class SogCardLevelFactory extends \SandraCore\EntityFactory
     // public const HAS_FAMILY = 'belongsToFamily';
     protected  $generatedEntityClass = 'CsSog\SogCardLevel' ;
 
-
+    // belongsToCard
 
     public function __construct($bundle, System $system)
     {

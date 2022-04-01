@@ -24,7 +24,7 @@ class SogCardLevel extends Entity
 
     );
 
-    public function populateWithEntities(System $sandra, string $bundle)
+    public function populateWithEntities(System $sandra, string $bundle): SogCardLevel
     {
         $this->factory->joinFactory(SogCardLevelFactory::HAS_SPELL, new SogSpellFactory($bundle, $sandra));
         $this->factory->joinPopulate();
@@ -33,7 +33,8 @@ class SogCardLevel extends Entity
         return $this;
     }
 
-    public function getDisplay($dictionary = null){
+    public function getDisplay($dictionary = null): array
+    {
 
         if(!$dictionary) $dictionary = $this->dictionary ;
         $response = array();
