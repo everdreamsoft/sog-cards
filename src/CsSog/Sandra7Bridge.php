@@ -8,13 +8,18 @@
 
 namespace CsSog;
 
+use SandraCore\DebugStack;
+
 class Sandra7Bridge extends \SandraCore\System {
 
+    public static $logger = null;
 
     public function __construct($env = '', $install = false, $dbHost = '127.0.0.1', $db = 'sandra', $dbUsername = 'root', $dbpassword = '')
     {
+        $debugStack = new DebugStack();
+        $debugStack->enabled = false;
+        self::$logger = $debugStack;
 
-        self::initDebugStack();
         self::$pdo = new \SandraCore\PdoConnexionWrapper($dbHost, $db,$dbUsername, $dbpassword);
         $pdoWrapper = self::$pdo ;
 
